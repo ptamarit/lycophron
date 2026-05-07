@@ -122,9 +122,8 @@ def upload_record_files(client, record: Record, draft: Draft | None = None):
             upload_file(client, f, draft)
         except HTTPError as e:
             if e.response.status_code == 400:
-                if check_file_status(f.filename, draft) in [
-                    "pending"
-                ]:  # TODO Add status of error
+                # TODO Add status of error
+                if check_file_status(f.filename, draft) == "pending":
                     draft.files(f.filename).delete()
                     upload_file(client, f, draft)  # TODO Configure number of retries
             else:

@@ -383,7 +383,7 @@ class RecordRow(Schema):
 
             if key_of_prefix and field in base_definitions.get(key_of_prefix, []):
                 target_field = f"{key_of_prefix}:{field}"
-                if key_of_prefix in ["thesis"]:
+                if key_of_prefix == "thesis":
                     output[prefix] = value
                 else:
                     output[prefix][field] = value

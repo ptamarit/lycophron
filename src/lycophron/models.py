@@ -31,7 +31,7 @@ class classproperty:
         return self.fget(owner)
 
 
-class RecordStatus(str, enum.Enum):
+class RecordStatus(enum.StrEnum):
     TODO = "NEW"
     QUEUED = "QUEUED"
     DRAFT_CREATED = "DRAFT_CREATED"
@@ -111,7 +111,7 @@ class Record(Model, Timestamp):
         return self.status == RecordStatus.PUBLISHED
 
 
-class FileStatus(str, enum.Enum):
+class FileStatus(enum.StrEnum):
     TODO = "TODO"
     UPLOADED = "UPLOADED"
     FAILED = "FAILED"
@@ -129,7 +129,7 @@ class File(Model, Timestamp):
     UniqueConstraint(record_id, filename, name="unique_file_per_record")
 
 
-class CommunityStatus(str, enum.Enum):
+class CommunityStatus(enum.StrEnum):
     TODO = "TODO"
     REQUEST_CREATED = "REQUEST_CREATED"
 

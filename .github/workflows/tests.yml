@@ -31,6 +31,8 @@ jobs:
         uv sync
 
     - uses: astral-sh/ruff-action@v4.1.0
+      with:
+        version-file: 'uv.lock'
 
     - name: Run tests
       run: |
